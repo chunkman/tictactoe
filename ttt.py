@@ -1,7 +1,3 @@
-#game_board_top = [' ','|',' ','|',' ']
-#game_board_mid = [' ','|',' ','|',' ']
-#game_board_bot = [' ','|',' ','|',' ']
-#game_board_div = "---------"
 
 game_board = [[' ','|',' ','|',' '],[' ','|',' ','|',' '],[' ','|',' ','|',' ']]
 game_board_div = "----------"
@@ -66,11 +62,4 @@ def play_square(board, number, letter):
         board[0][4] = letter
         return board
 
-#printgameboard(game_board)
-#play_square(game_board, 1, 'X')
-#printgameboard(game_board)
-#play_square(game_board, 5, 'X')
-#printgameboard(game_board)
-#play_square(game_board, 9, 'X')
-#printgameboard(game_board)
-#win_cond(game_board)
+
