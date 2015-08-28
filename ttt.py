@@ -22,11 +22,14 @@ def win_cond(board):
         print "Row 2 win"
     elif board[2][0] == board[2][2] == board[2][4]:
         print "Row 3 win"
+    elif board[0][0] == board[1][0] == board[2][0]:
+        print "Column 1 win"
+    elif board[0][2] == board[1][2] == board[2][2]:
+        print "Column 2 win"
+    elif board[0][4] == board[1][4] == board[2][4]:
+        print "Column 3 win"
+    elif board[0][0] == board[1][2] == board[2][4]:
+        print "Diagonal 1 win"
+    elif board[0][4] == board[1][2] == board[2][0]:
+        print "Diagonal 2 win"
 
-game_board[0][0] = 'X'
-game_board[0][2] = 'X'
-game_board[0][4] = 'X'
-
-printgameboard(game_board)
-
-win_cond(game_board)
