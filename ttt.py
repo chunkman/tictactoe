@@ -14,28 +14,20 @@ def printgameboard(board):
 def win_cond(board):
 
     if board[0][0] == board[0][2] == board[0][4] != ' ':
-        print "Row 1 win"
         return board[0][0]
     elif board[1][0] == board[1][2] == board[1][4] != ' ':
-        print "Row 2 win"
         return board[1][0]
     elif board[2][0] == board[2][2] == board[2][4] != ' ':
-        print "Row 3 win"
         return board[2][0]
     elif board[0][0] == board[1][0] == board[2][0] != ' ':
-        print "Column 1 win"
         return board[0][0]
     elif board[0][2] == board[1][2] == board[2][2] != ' ':
-        print "Column 2 win"
         return board[0][2]
     elif board[0][4] == board[1][4] == board[2][4] != ' ':
-        print "Column 3 win"
         return board[0][4]
     elif board[0][0] == board[1][2] == board[2][4] != ' ':
-        print "Diagonal 1 win"
         return board[0][0]
     elif board[0][4] == board[1][2] == board[2][0] != ' ':
-        print "Diagonal 2 win"
         return board[0][4]
     else:
         return False
@@ -70,11 +62,20 @@ def play_square(board, number, letter):
         board[0][4] = letter
         return board
 
+printgameboard(game_board)
+letter = raw_input("Do you want to be X or O?")
+letter = letter.upper()
 
 while (win_cond(game_board) == False):
 
-    x = int(raw_input("> "))
-    letter = 'X'
-    play_square(game_board,x,letter)
-    win_cond(game_board)
+    keypad_num = int(raw_input("Enter the number of the square you want."))
+    game_board = play_square(game_board,keypad_num,letter)
+    winning_letter = win_cond(game_board)
     printgameboard(game_board)
+    if winning_letter:
+        print "The letter %s wins!" % winning_letter
+    elif letter == 'X':
+        letter = 'O'
+    else:
+        letter = 'X'
+    
