@@ -5,11 +5,14 @@ game_board_div = "----------"
 
 def printgameboard(board):
 
+    rowcount = 0
     print '\n'
     for row in board:
         for each in row:
             print each,
-        print '\n' + game_board_div
+        rowcount += 1
+        if rowcount <= 2:
+            print '\n' + game_board_div
     print '\n'
 
 def win_cond(board):
