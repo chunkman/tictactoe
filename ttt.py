@@ -81,6 +81,7 @@ while (not (letter == 'X' or letter =='O')):
 
 while (win_cond(game_board) == False):
 
+    print "It is %s's turn." % letter
     game_board_old = game_board
     keypad_num = int(raw_input("Enter the number of the square you want."))
     game_board = play_square(game_board, keypad_num, letter)
@@ -93,7 +94,5 @@ while (win_cond(game_board) == False):
         letter = 'O'
     elif letter == 'O':
         letter = 'X'
-
-    print "It's %s's turn." % letter
 
 print "%s has won!" % win_cond(game_board)
