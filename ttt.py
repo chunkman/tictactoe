@@ -1,3 +1,4 @@
+#This is the worst code I've ever written
 
 game_board = [['7','|','8','|','9'],['4','|','5','|','6'],['1','|','2','|','3']]
 game_board_div = "----------"
@@ -74,6 +75,9 @@ def play_square(board, number, letter):
 printgameboard(game_board)
 letter = raw_input("Do you want to be X or O? ")
 letter = letter.upper()
+while (not (letter == 'X' or letter =='O')):
+    letter = raw_input("Please enter an x or an o. ")
+    letter = letter.upper()
 
 while (win_cond(game_board) == False):
 
