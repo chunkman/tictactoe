@@ -33,38 +33,43 @@ def win_cond(board):
         return False
 
 def check_square(square):
+
     if square != 'X' and square != 'O':
         return True
+    else:
+        return False
 
 def play_square(board, number, letter):
 
-    if number == 1:
+    if number == 1 and check_square(board[2][0]):
         board[2][0] = letter
         return board
-    elif number == 2:
+    elif number == 2 and check_square(board[2][2]):
         board[2][2] = letter
         return board
-    elif number == 3:
+    elif number == 3 and check_square(board[2][4]):
         board[2][4] = letter
         return board
-    elif number == 4:
+    elif number == 4 and check_square(board[1][0]):
         board[1][0] = letter
         return board
-    elif number == 5:
+    elif number == 5 and check_square(board[1][2]):
         board[1][2] = letter
         return board
-    elif number == 6:
+    elif number == 6 and check_square(board[1][4]):
         board[1][4] = letter
         return board
-    elif number == 7:
+    elif number == 7 and check_square(board[0][0]):
         board[0][0] = letter
         return board
-    elif number == 8:
+    elif number == 8 and check_square(board[0][2]):
         board[0][2] = letter
         return board
-    elif number == 9:
+    elif number == 9 and check_square(board[0][4]):
         board[0][4] = letter
         return board
+    else:
+        return False
 
 printgameboard(game_board)
 letter = raw_input("Do you want to be X or O? ")
@@ -72,16 +77,19 @@ letter = letter.upper()
 
 while (win_cond(game_board) == False):
 
+    game_board_old = game_board
     keypad_num = int(raw_input("Enter the number of the square you want."))
-    game_board = play_square(game_board,keypad_num,letter)
-    winning_letter = win_cond(game_board)
+    game_board = play_square(game_board, keypad_num, letter)
+    while game_board == False:
+        keypad_num = int(raw_input("That square is already taken. Choose another."))
+        game_board = play_square(game_board_old, keypad_num, letter)
     printgameboard(game_board)
-    if winning_letter:
-        print "The letter %s wins!" % winning_letter
-        break
-    elif letter == 'X':
+
+    if letter == 'X':
         letter = 'O'
-    else:
+    elif letter == 'O':
         letter = 'X'
-    print "It's %s's turn. " % letter
-    
+
+    print "It's %s's turn." % letter
+
+print "%s has won!" % win_cond(game_board)
