@@ -82,6 +82,8 @@ while (not (letter == 'X' or letter =='O')):
     letter = raw_input("Please enter an x or an o. ")
     letter = letter.upper()
 
+board_total = 9
+
 while (win_cond(game_board) == False):
 
     print "It is %s's turn." % letter
@@ -92,10 +94,15 @@ while (win_cond(game_board) == False):
         keypad_num = int(raw_input("That square is already taken. Choose another."))
         game_board = play_square(game_board_old, keypad_num, letter)
     printgameboard(game_board)
+    board_total -= 1
+    if board_total == 0:
+        print "It is a tie!"
+        break
 
     if letter == 'X':
         letter = 'O'
     elif letter == 'O':
         letter = 'X'
 
-print "%s has won!" % win_cond(game_board)
+if win_cond(game_board):
+    print "%s has won!" % win_cond(game_board)
