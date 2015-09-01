@@ -76,7 +76,7 @@ printgameboard()
 letter = raw_input("Do you want to be X or O? ")
 letter = letter.upper()
 while (not (letter == 'X' or letter =='O')):
-    letter = raw_input("Please enter an x or an o. ")
+    letter = raw_input("Please enter an X or an O. ")
     letter = letter.upper()
 
 board_total = 9
@@ -84,10 +84,12 @@ board_total = 9
 while (win_cond() == False):
 
     print "It is %s's turn." % letter
-    keypad_num = int(raw_input("Enter the number of the square you want."))
+    keypad_num = int(raw_input("Enter the number of the square you want. "))
+    while (keypad_num < 1 or keypad_num > 9):
+        keypad_num = int(raw_input("Please enter a number between 1 and 9. "))
     valid_play = play_square(keypad_num, letter)
     while (valid_play == False):
-        keypad_num = int(raw_input("That square is already taken. Choose another."))
+        keypad_num = int(raw_input("That square is already taken. Choose another. "))
         valid_play = play_square(keypad_num, letter)
     printgameboard()
     board_total -= 1
