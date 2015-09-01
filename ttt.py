@@ -1,9 +1,9 @@
 #This is the worst code I've ever written
 
-game_board = [['7','|','8','|','9'],['4','|','5','|','6'],['1','|','2','|','3']]
+board = [['7','|','8','|','9'],['4','|','5','|','6'],['1','|','2','|','3']]
 game_board_div = "----------"
 
-def printgameboard(board):
+def printgameboard():
 
     rowcount = 0
     print '\n'
@@ -15,7 +15,7 @@ def printgameboard(board):
             print '\n' + game_board_div
     print '\n'
 
-def win_cond(board):
+def win_cond():
 
     if board[0][0] == board[0][2] == board[0][4]:
         return board[0][0]
@@ -40,39 +40,39 @@ def check_square(square):
 
     return square.isdigit()
 
-def play_square(board, number, letter):
+def play_square(number, letter):
 
     if number == 1 and check_square(board[2][0]):
         board[2][0] = letter
-        return board
+        return True
     elif number == 2 and check_square(board[2][2]):
         board[2][2] = letter
-        return board
+        return True
     elif number == 3 and check_square(board[2][4]):
         board[2][4] = letter
-        return board
+        return True
     elif number == 4 and check_square(board[1][0]):
         board[1][0] = letter
-        return board
+        return True
     elif number == 5 and check_square(board[1][2]):
         board[1][2] = letter
-        return board
+        return True
     elif number == 6 and check_square(board[1][4]):
         board[1][4] = letter
-        return board
+        return True
     elif number == 7 and check_square(board[0][0]):
         board[0][0] = letter
-        return board
+        return True
     elif number == 8 and check_square(board[0][2]):
         board[0][2] = letter
-        return board
+        return True
     elif number == 9 and check_square(board[0][4]):
         board[0][4] = letter
-        return board
+        return True
     else:
         return False
 
-printgameboard(game_board)
+printgameboard()
 letter = raw_input("Do you want to be X or O? ")
 letter = letter.upper()
 while (not (letter == 'X' or letter =='O')):
@@ -81,16 +81,15 @@ while (not (letter == 'X' or letter =='O')):
 
 board_total = 9
 
-while (win_cond(game_board) == False):
+while (win_cond() == False):
 
     print "It is %s's turn." % letter
-    game_board_old = game_board
     keypad_num = int(raw_input("Enter the number of the square you want."))
-    game_board = play_square(game_board, keypad_num, letter)
-    while game_board == False:
+    valid_play = play_square(keypad_num, letter)
+    while (valid_play == False):
         keypad_num = int(raw_input("That square is already taken. Choose another."))
-        game_board = play_square(game_board_old, keypad_num, letter)
-    printgameboard(game_board)
+        valid_play = play_square(keypad_num, letter)
+    printgameboard()
     board_total -= 1
     if board_total == 0:
         print "It is a tie!"
@@ -101,5 +100,5 @@ while (win_cond(game_board) == False):
     elif letter == 'O':
         letter = 'X'
 
-if win_cond(game_board):
-    print "%s has won!" % win_cond(game_board)
+if win_cond():
+    print "%s has won!" % win_cond()
