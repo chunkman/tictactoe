@@ -38,10 +38,7 @@ def win_cond(board):
 
 def check_square(square):
 
-    if square != 'X' and square != 'O':
-        return True
-    else:
-        return False
+    return square.isdigit()
 
 def play_square(board, number, letter):
 
