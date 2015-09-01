@@ -36,37 +36,37 @@ def win_cond():
     else:
         return False
 
-def check_square(square):
-
-    return square.isdigit()
+#def check_square(square):
+#
+#    return square.isdigit()
 
 def play_square(number, letter):
 
-    if number == 1 and check_square(board[2][0]):
+    if number == 1 and board[2][0].isdigit():
         board[2][0] = letter
         return True
-    elif number == 2 and check_square(board[2][2]):
+    elif number == 2 and board[2][2].isdigit():
         board[2][2] = letter
         return True
-    elif number == 3 and check_square(board[2][4]):
+    elif number == 3 and board[2][4].isdigit():
         board[2][4] = letter
         return True
-    elif number == 4 and check_square(board[1][0]):
+    elif number == 4 and board[1][0].isdigit():
         board[1][0] = letter
         return True
-    elif number == 5 and check_square(board[1][2]):
+    elif number == 5 and board[1][2].isdigit():
         board[1][2] = letter
         return True
-    elif number == 6 and check_square(board[1][4]):
+    elif number == 6 and board[1][4].isdigit():
         board[1][4] = letter
         return True
-    elif number == 7 and check_square(board[0][0]):
+    elif number == 7 and board[0][0].isdigit():
         board[0][0] = letter
         return True
-    elif number == 8 and check_square(board[0][2]):
+    elif number == 8 and board[0][2].isdigit():
         board[0][2] = letter
         return True
-    elif number == 9 and check_square(board[0][4]):
+    elif number == 9 and board[0][4].isdigit():
         board[0][4] = letter
         return True
     else:
