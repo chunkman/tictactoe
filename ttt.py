@@ -81,16 +81,17 @@ board_total = 9
 while (win_cond() == False):
 
     print "It is %s's turn." % letter
-    keypad_num = int(raw_input("Enter the number of the square you want. "))
-    while (keypad_num not in range(1,10)):
-        keypad_num = int(raw_input("Please enter a number between 1 and 9. "))
+    keypad_num = raw_input("Enter the number of the square you want.")
+    while keypad_num not in '123456789':
+        keypad_num = raw_input("Please enter an integer between 1 and 9. ")
+    keypad_num = int(keypad_num)
     valid_play = play_square(keypad_num, letter)
     while (valid_play == False):
         keypad_num = int(raw_input("That square is already taken. Choose another. "))
         valid_play = play_square(keypad_num, letter)
     printgameboard()
     board_total -= 1
-    if board_total == 0:
+    if board_total == 0 and win_cond() == False:
         print "It is a tie!"
         break
 
