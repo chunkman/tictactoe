@@ -1,7 +1,11 @@
 #This is the worst code I've ever written
+#Note for future me: try using a dict to hold the values of the board.
 
-board = [['7','|','8','|','9'],['4','|','5','|','6'],['1','|','2','|','3']]
-game_board_div = "----------"
+board = [
+            ['7','|','8','|','9'],
+            ['4','|','5','|','6'],
+            ['1','|','2','|','3']
+        ]
 
 def printgameboard():
 
@@ -12,7 +16,7 @@ def printgameboard():
             print each,
         rowcount += 1
         if rowcount <= 2:
-            print '\n' + game_board_div
+            print '\n' + '----------'
     print '\n'
 
 def win_cond():
