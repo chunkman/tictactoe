@@ -105,11 +105,12 @@ def cpu_turn(letter):
 
 
 printgameboard()
-num_players = int(raw_input("How many players? 1 or 2. "))
+
+num_players = raw_input("How many players? 1 or 2. ")
 
 play_count = 0
 
-if num_players == 1:
+if num_players == '1':
 
     while True:
 
@@ -133,7 +134,7 @@ if num_players == 1:
         if play_count == 9:
             print "It's a tie"
             break
-else:
+elif num_players == '2':
 
     while True:
 
@@ -158,4 +159,30 @@ else:
             print "Its a tie"
             break
 
+elif num_players == '0':
 
+    while True:
+
+        print "X's Turn"
+        cpu_turn('X')
+        play_count += 1
+        printgameboard()
+        if win_cond():
+            print "X wins"
+            break
+        if play_count == 9:
+            print "Its a tie."
+            break
+        print "O's Turn"
+        cpu_turn('O')
+        play_count += 1
+        printgameboard()
+        if win_cond():
+            print "O wins"
+            break
+        if play_count == 9:
+            print "Its a tie"
+            break
+else:
+    
+    print "You are an idiot."
