@@ -1,5 +1,6 @@
 #This is the worst code I've ever written
 #Note for future me: try using a dict to hold the values of the board.
+
 import random
 
 
@@ -8,6 +9,7 @@ board = [
             ['4','|','5','|','6'],
             ['1','|','2','|','3']
         ]
+
 
 def printgameboard():
 
@@ -75,17 +77,20 @@ def play_square(number, letter):
     else:
         return False
 
+def valid_keypad():
+
+    number = raw_input("Enter the number of the square you want. ")
+    while number not in '123456789':
+        number = raw_input("Please enter a number between 1 and 9. ")
+    return int(number)
+
 def player_turn(letter):
 
-    keypad_num = raw_input("Enter the number of the square you want: ")
-    while keypad_num not in '123456789':
-        keypad_num = raw_input("Please enter a number between 1 and 9: ")
-    keypad_num = int(keypad_num)
+    keypad_num = valid_keypad()
     valid_play = play_square(keypad_num, letter)
     while valid_play == False:
-        while keypad_num not in '123456789':
-            keypad_num = raw_input("Please enter a number between 1 and 9: ")
-        keypad_num = int(keypad_num)
+        print "That square is already taken. Please choose another."
+        keypad_num = valid_keypad()
         valid_play = play_square(keypad_num, letter)
 
 def cpu_turn(letter):
@@ -98,7 +103,8 @@ def cpu_turn(letter):
 
 
 printgameboard()
-num_players = int(raw_input("How many players? 1 or 2."))
+num_players = int(raw_input("How many players? 1 or 2. "))
+
 if num_players == 1:
 
     while True:
@@ -116,6 +122,7 @@ if num_players == 1:
             print 'O wins'
             break
 else:
+
     while True:
 
         print "X's Turn"
