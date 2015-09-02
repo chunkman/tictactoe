@@ -1,5 +1,7 @@
 #This is the worst code I've ever written
 #Note for future me: try using a dict to hold the values of the board.
+import random
+
 
 board = [
             ['7','|','8','|','9'],
@@ -73,36 +75,60 @@ def play_square(number, letter):
     else:
         return False
 
-printgameboard()
-letter = raw_input("Do you want to be X or O? ")
-letter = letter.upper()
-while (letter not in ['X','O']):
-    letter = raw_input("Please enter an X or an O. ")
-    letter = letter.upper()
+def player_turn(letter):
 
-board_total = 9
-
-while (win_cond() == False):
-
-    print "It is %s's turn." % letter
-    keypad_num = raw_input("Enter the number of the square you want.")
+    keypad_num = raw_input("Enter the number of the square you want: ")
     while keypad_num not in '123456789':
-        keypad_num = raw_input("Please enter an integer between 1 and 9. ")
+        keypad_num = raw_input("Please enter a number between 1 and 9: ")
     keypad_num = int(keypad_num)
     valid_play = play_square(keypad_num, letter)
-    while (valid_play == False):
-        keypad_num = int(raw_input("That square is already taken. Choose another. "))
+    while valid_play == False:
+        while keypad_num not in '123456789':
+            keypad_num = raw_input("Please enter a number between 1 and 9: ")
+        keypad_num = int(keypad_num)
         valid_play = play_square(keypad_num, letter)
-    printgameboard()
-    board_total -= 1
-    if board_total == 0 and win_cond() == False:
-        print "It is a tie!"
-        break
 
-    if letter == 'X':
-        letter = 'O'
-    elif letter == 'O':
-        letter = 'X'
+def cpu_turn(letter):
 
-if win_cond():
-    print "%s has won!" % win_cond()
+    keypad_num = random.randint(1, 10)
+    valid_play = play_square(keypad_num, letter)
+    while valid_play == False:
+        keypad_num = random.randint(1, 10)
+        valid_play = play_square(keypad_num, letter)
+
+
+printgameboard()
+num_players = int(raw_input("How many players? 1 or 2."))
+if num_players == 1:
+
+    while True:
+
+        print "X's Turn"
+        player_turn('X')
+        printgameboard()
+        if win_cond():
+            print 'X wins'
+            break
+        print "O's Turn"
+        cpu_turn('O')
+        printgameboard()
+        if win_cond():
+            print 'O wins'
+            break
+else:
+    while True:
+
+        print "X's Turn"
+        player_turn('X')
+        printgameboard()
+        if win_cond():
+            print 'X wins'
+            break
+        print "O's Turn"
+        player_turn('O')
+        printgameboard()
+        if win_cond():
+            print 'O Wins'
+            break
+
+
