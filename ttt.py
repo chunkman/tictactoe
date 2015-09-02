@@ -2,6 +2,7 @@
 #Note for future me: try using a dict to hold the values of the board.
 
 import random
+import os
 
 
 board = [
@@ -13,6 +14,7 @@ board = [
 
 def printgameboard():
 
+    os.system('cls' if os.name == 'nt' else 'clear')
     rowcount = 0
     print '\n'
     for row in board:
