@@ -29,7 +29,7 @@ def win_cond():
 
     if board[0][0] == board[0][2] == board[0][4]:
         return board[0][0]
-    elif board[1][0] == board[1][2] == board[1][4]: 
+    elif board[1][0] == board[1][2] == board[1][4]:
         return board[1][0]
     elif board[2][0] == board[2][2] == board[2][4]:
         return board[2][0]
@@ -184,5 +184,4 @@ elif num_players == '0':
             print "Its a tie"
             break
 else:
-    
     print "You are an idiot."
