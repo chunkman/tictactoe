@@ -1,5 +1,3 @@
-#This is the worst code I've ever written
-#Note for future me: try using a dict to hold the values of the board.
 
 import random
 import os
