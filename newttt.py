@@ -1,4 +1,5 @@
-        
+import string
+
 game_board = ['1','2','3','4','5','6','7','8','9']
 score_board = [0,0,0,0,0,0,0,0]
 value_board = [0,0,0,0,0,0,0,0,0]
@@ -10,12 +11,18 @@ player2_value = 4
 
 def player1_play():
 
-    player1_space = int(raw_input("X: Enter space number: "))
+    player1_space = raw_input("X: Enter space number: ")
 
-    while(player1_space < 1 or player1_space > 9):
-        
-        print "Please enter a number between 1 and 9."
-        player1_space = int(raw_input("X: Enter space number: "))
+    while(player1_space not in string.digits):
+            print "Please enter a number between 1 and 9"
+            player1_space = raw_input("X: Enter space number: ")
+
+    player1_space = int(player1_space)
+
+    #while(player1_space < 1 or player1_space > 9):
+    #    
+    #    print "Please enter a number between 1 and 9."
+    #    player1_space = int(raw_input("X: Enter space number: "))
     
     game_board[player1_space-1] = player1_letter
     value_board[player1_space-1] = player1_value
@@ -24,11 +31,17 @@ def player1_play():
 
 def player2_play():
 
-    player2_space = int(raw_input("O: Enter space number: "))
+    player2_space = raw_input("O: Enter space number: ")
     
-    while(player2_space < 1 or player2_space > 9):
-        print "Please enter a number between 1 and 9."
-        player2_space = int(raw_input("O: Enter space number: "))
+    while(player2_space not in string.digits):
+        print "Please enter a number between 1 and 9"
+        player2_space = raw_input("O: Enter space number: ")
+
+    player2_space = int(player2_space)
+
+    #while(player2_space < 1 or player2_space > 9):
+    #    print "Please enter a number between 1 and 9."
+    #    player2_space = int(raw_input("O: Enter space number: "))
 
     game_board[player2_space-1] = player2_letter
     value_board[player2_space-1] = player2_value
