@@ -68,21 +68,21 @@ def win_condition():
         if each == 3:
             print "X Wins!"
             return True
+            break
         elif each == 12:
             print "O Wins!"
             return True
-        else:
-            return False
+            break
 
 while(True):
 
     print_game_board()
     player1_play()
-    if win_condition():
+    if win_condition() == True:
         break
     print_game_board()
     player2_play()
-    if win_condition():
+    if win_condition() == True:
         break
     
 print_game_board()
