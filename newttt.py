@@ -1,3 +1,8 @@
+# TODO: Add one player mode.
+# TODO: Add Zero player mode.
+# TODO: Add check so squares aren't overwritten.
+
+
 import string
 import os
 
