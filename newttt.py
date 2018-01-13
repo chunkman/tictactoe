@@ -1,4 +1,5 @@
 import string
+import os
 
 game_board = ['1','2','3','4','5','6','7','8','9']
 score_board = [0,0,0,0,0,0,0,0]
@@ -51,13 +52,17 @@ def set_score_board():
     score_board[7] = value_board[6] + value_board[7] + value_board[8]
 
 def print_game_board():
-    print "-----------------------"
-    print game_board[0] + '|' + game_board[1] + '|' + game_board[2]
-    print '-----------------------' 
-    print game_board[3] + '|' + game_board[4] + '|' + game_board[5] 
-    print '-----------------------' 
-    print game_board[6] + '|' + game_board[7] + '|' + game_board[8] 
-    print '-----------------------' + '\n'
+
+    if(win_condition() == False):
+        os.system('cls' if os.name == 'nt' else 'clear')
+
+    print '\n'
+    print "     " + game_board[0] + '|' + game_board[1] + '|' + game_board[2]
+    print '    --------' 
+    print "     " + game_board[3] + '|' + game_board[4] + '|' + game_board[5] 
+    print '    --------' 
+    print "     " + game_board[6] + '|' + game_board[7] + '|' + game_board[8] 
+    print '\n'
 
 def win_condition():
 
@@ -70,6 +75,8 @@ def win_condition():
     elif 12 in score_board:
         print "O Wins\n"
         return True
+    else:
+        return False
 
 while(True):
 
@@ -81,5 +88,5 @@ while(True):
     player2_play()
     if win_condition() == True:
         break
-    
-print_game_board()
+
+print_game_board()    
