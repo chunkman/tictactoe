@@ -64,15 +64,12 @@ def win_condition():
     if 0 not in value_board:
         print "It's a Tie!"
         return True
-    for each in score_board:
-        if each == 3:
-            print "X Wins!"
-            return True
-            break
-        elif each == 12:
-            print "O Wins!"
-            return True
-            break
+    if 3 in score_board:
+        print "X Wins!\n"
+        return True
+    elif 12 in score_board:
+        print "O Wins\n"
+        return True
 
 while(True):
 
