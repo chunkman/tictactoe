@@ -1,13 +1,3 @@
-class Piece(object):
-    def __init__(self,letter,space):
-        
-        self.letter = letter
-        self.space = space - 1
-        
-        if letter == 'X':
-            self.value = 1
-        else:
-            self.value = 4
         
 game_board = ['1','2','3','4','5','6','7','8','9']
 score_board = [0,0,0,0,0,0,0,0]
@@ -15,26 +5,24 @@ value_board = [0,0,0,0,0,0,0,0,0]
 
 player1_letter = 'X'
 player2_letter = 'O'
+player1_value = 1
+player2_value = 4
 
 def player1_play():
 
-    player1_space = int(raw_input("Enter space number: "))
-    player1_piece = Piece(player1_letter,player1_space)
+    player1_space = int(raw_input("Player One: Enter space number: "))
     
-    game_board[player1_piece.space] = player1_piece.letter
-    value_board[player1_piece.space] = player1_piece.value
-    
+    game_board[player1_space-1] = player1_letter
+    value_board[player1_space-1] = player1_value
     
     set_score_board()
 
 def player2_play():
 
-    player2_space = int(raw_input("Enter space number: "))
-    player2_piece = Piece(player2_letter,player2_space)
+    player2_space = int(raw_input("Player Two: Enter space number: "))
 
-    game_board[player2_piece.space] = player2_piece.letter
-    value_board[player2_piece.space] = player2_piece.value
-    
+    game_board[player2_space-1] = player2_letter
+    value_board[player2_space-1] = player2_value
     
     set_score_board()
 
@@ -59,26 +47,31 @@ def print_game_board():
     print '-----------------------' + '\n'
 
 def win_condition():
+
+    if 0 not in value_board:
+        print "It's a Tie!"
+        return True
     for each in score_board:
         if each == 3:
             print "X Wins!"
             return True
-            break
         elif each == 12:
             print "O Wins!"
             return True
-            break
+        else:
+            return False
+
 while(True):
 
     print_game_board()
     player1_play()
-    if win_condition() == True:
+    if win_condition():
         break
     print_game_board()
     player2_play()
-    if win_condition() == True:
+    if win_condition():
         break
-
+    
 print_game_board()
 
    # print "score_board = ", score_board
