@@ -66,14 +66,14 @@ def print_game_board():
 
 def win_condition():
 
-    if 0 not in value_board:
-        print "It's a Tie!"
-        return True
     if 3 in score_board:
         print "X Wins!\n"
         return True
     elif 12 in score_board:
         print "O Wins\n"
+        return True
+    elif 0 not in value_board:
+        print "It's a Tie!"
         return True
     else:
         return False
@@ -90,3 +90,5 @@ while(True):
         break
 
 print_game_board()    
+print "Value board = ", value_board
+print "Score Board = ", score_board
