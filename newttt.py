@@ -1,7 +1,5 @@
 # TODO: Add one player mode.
 # TODO: Add Zero player mode.
-# TODO: Add check so squares aren't overwritten.
-
 
 import string
 import os
@@ -15,35 +13,38 @@ player2_letter = 'O'
 player1_value = 1
 player2_value = 4
 
-def player1_play():
+def play(letter,value):
 
-    player1_space = raw_input("X: Enter space number: ")
+    space = raw_input("%s: Enter space number: " % letter)
+    
+    space = check_number(space)
+    
+    while check_play(space) == False:
 
-    while(player1_space not in string.digits):
-            print "Please enter a number between 1 and 9"
-            player1_space = raw_input("X: Enter space number: ")
+        print "That square is already taken. Please choose another."
+        space = raw_input("%s: Enter space number: " % letter)
+        space = check_number(space)
 
-    player1_space = int(player1_space)
-
-    game_board[player1_space-1] = player1_letter
-    value_board[player1_space-1] = player1_value
+    game_board[space-1] = letter
+    value_board[space-1] = value
     
     set_score_board()
 
-def player2_play():
+def check_number(space):
 
-    player2_space = raw_input("O: Enter space number: ")
-    
-    while(player2_space not in string.digits):
+    while(space not in string.digits):
+
         print "Please enter a number between 1 and 9"
-        player2_space = raw_input("O: Enter space number: ")
+        space = raw_input("Enter space number: ")
 
-    player2_space = int(player2_space)
+    return int(space)
 
-    game_board[player2_space-1] = player2_letter
-    value_board[player2_space-1] = player2_value
-    
-    set_score_board()
+def check_play(space):
+
+    if value_board[space - 1] == 0:
+        return True
+    else:
+        return False
 
 def set_score_board():
 
@@ -86,14 +87,12 @@ def win_condition():
 while(True):
 
     print_game_board()
-    player1_play()
+    play(player1_letter,player1_value)
     if win_condition() == True:
         break
     print_game_board()
-    player2_play()
+    play(player2_letter,player2_value)
     if win_condition() == True:
         break
 
 print_game_board()    
-print "Value board = ", value_board
-print "Score Board = ", score_board
