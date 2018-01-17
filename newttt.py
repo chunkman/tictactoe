@@ -3,6 +3,7 @@
 
 import string
 import os
+import random
 
 game_board = ['1','2','3','4','5','6','7','8','9']
 score_board = [0,0,0,0,0,0,0,0]
@@ -28,6 +29,19 @@ def play(letter,value):
     game_board[space-1] = letter
     value_board[space-1] = value
     
+    set_score_board()
+
+def random_play(letter,value):
+
+    space = random.randint(1, 9)
+
+    while check_play(space) == False:
+
+        space = random.randint(0, 9)
+
+    game_board[space - 1] = letter
+    value_board[space - 1] = value
+
     set_score_board()
 
 def check_number(space):
@@ -91,7 +105,7 @@ while(True):
     if win_condition() == True:
         break
     print_game_board()
-    play(player2_letter,player2_value)
+    random_play(player2_letter,player2_value)
     if win_condition() == True:
         break
 
