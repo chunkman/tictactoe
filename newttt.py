@@ -14,7 +14,7 @@ player2_letter = 'O'
 player1_value = 1
 player2_value = 4
 
-def play(letter,value):
+def human_play(letter,value):
 
     space = raw_input("%s: Enter space number: " % letter)
     
@@ -31,7 +31,7 @@ def play(letter,value):
     
     set_score_board()
 
-def random_play(letter,value):
+def computer_play(letter,value):
 
     space = random.randint(1, 9)
 
@@ -98,15 +98,48 @@ def win_condition():
     else:
         return False
 
-while(True):
+num_of_players = raw_input("Enter the number of players: 1 or 2.")
 
-    print_game_board()
-    play(player1_letter,player1_value)
-    if win_condition() == True:
-        break
-    print_game_board()
-    random_play(player2_letter,player2_value)
-    if win_condition() == True:
-        break
+if num_of_players == '1':
+
+    while (True):
+
+        print_game_board()
+        human_play(player1_letter, player1_value)
+        if win_condition() == True:
+            break
+        print_game_board()
+        computer_play(player2_letter, player2_value)
+        if win_condition() == True:
+            break
+
+elif num_of_players == '2':
+
+    while (True):
+
+        print_game_board()
+        human_play(player1_letter, player1_value)
+        if win_condition() == True:
+            break
+        print_game_board()
+        human_play(player2_letter, player2_value)
+        if win_condition() == True:
+            break
+
+elif num_of_players == '0':
+
+    while (True):
+
+        print_game_board()
+        computer_play(player1_letter,player1_value)
+        if win_condition() == True:
+            break
+        print_game_board()
+        computer_play(player2_letter,player2_value)
+        if win_condition() == True:
+            break
+else:
+
+    print "You are an idiot."
 
 print_game_board()    
