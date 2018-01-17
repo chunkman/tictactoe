@@ -5,6 +5,7 @@ import os
 import random
 
 game_board = ['1','2','3','4','5','6','7','8','9']
+available_squares = [1,2,3,4,5,6,7,8,9]
 score_board = [0,0,0,0,0,0,0,0]
 value_board = [0,0,0,0,0,0,0,0,0]
 
@@ -28,7 +29,9 @@ def human_play(letter,value):
     game_board[space - 1] = letter
 
     value_board[space - 1] = value
-    
+
+    available_squares.remove(space)
+
     set_score_board()
 
 def computer_play(letter,value):
@@ -43,6 +46,8 @@ def computer_play(letter,value):
 
     value_board[space - 1] = value
 
+    available_squares.remove(space)
+
     set_score_board()
 
 def check_number(space):
@@ -56,12 +61,10 @@ def check_number(space):
 
 def check_play(space):
 
-    if value_board[space - 1] == 0:
 
+    if space in available_squares:
         return True
-
     else:
-
         return False
 
 def set_score_board():
