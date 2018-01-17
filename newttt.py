@@ -1,5 +1,4 @@
-# TODO: Add one player mode.
-# TODO: Add Zero player mode.
+#TODO: Add Hard difficulty level.
 
 import string
 import os
@@ -26,8 +25,9 @@ def human_play(letter,value):
         space = raw_input("%s: Enter space number: " % letter)
         space = check_number(space)
 
-    game_board[space-1] = letter
-    value_board[space-1] = value
+    game_board[space - 1] = letter
+
+    value_board[space - 1] = value
     
     set_score_board()
 
@@ -40,6 +40,7 @@ def computer_play(letter,value):
         space = random.randint(0, 9)
 
     game_board[space - 1] = letter
+
     value_board[space - 1] = value
 
     set_score_board()
@@ -56,8 +57,11 @@ def check_number(space):
 def check_play(space):
 
     if value_board[space - 1] == 0:
+
         return True
+
     else:
+
         return False
 
 def set_score_board():
@@ -74,6 +78,7 @@ def set_score_board():
 def print_game_board():
 
     if(win_condition() == False):
+
         os.system('cls' if os.name == 'nt' else 'clear')
 
     print '\n'
@@ -87,27 +92,35 @@ def print_game_board():
 def win_condition():
 
     if 3 in score_board:
+        
         print "X Wins!\n"
         return True
+
     elif 12 in score_board:
+
         print "O Wins\n"
         return True
+
     elif 0 not in value_board:
+
         print "It's a Tie!"
         return True
+
     else:
+
         return False
 
 num_of_players = raw_input("Enter the number of players: 1 or 2.")
 
 if num_of_players == '1':
 
-    while (True):
+    while True:
 
         print_game_board()
         human_play(player1_letter, player1_value)
         if win_condition() == True:
             break
+
         print_game_board()
         computer_play(player2_letter, player2_value)
         if win_condition() == True:
@@ -115,12 +128,13 @@ if num_of_players == '1':
 
 elif num_of_players == '2':
 
-    while (True):
+    while True:
 
         print_game_board()
         human_play(player1_letter, player1_value)
         if win_condition() == True:
             break
+
         print_game_board()
         human_play(player2_letter, player2_value)
         if win_condition() == True:
@@ -128,12 +142,13 @@ elif num_of_players == '2':
 
 elif num_of_players == '0':
 
-    while (True):
+    while True:
 
         print_game_board()
         computer_play(player1_letter,player1_value)
         if win_condition() == True:
             break
+
         print_game_board()
         computer_play(player2_letter,player2_value)
         if win_condition() == True:
