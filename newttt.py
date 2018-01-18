@@ -14,6 +14,8 @@ player2_letter = 'O'
 player1_value = 1
 player2_value = 4
 
+tie_count = 0
+
 def human_play(letter, value):
 
     space = raw_input("%s: Enter space number: " % letter)
@@ -36,19 +38,17 @@ def human_play(letter, value):
 
 def computer_play(letter, value):
 
-   # space = random.choice(available_squares)
-
-   # while not check_play(space):
-
-   #     space = random.randint(0, 9)
-
     if value is 1:
+
         enemy_value = 4
     else:
+
         enemy_value = 1
 
     space = hard_mode(value, enemy_value)
+    
     while not check_play(space):
+
         space = hard_mode(value, enemy_value)
 
     game_board[space - 1] = letter
@@ -123,11 +123,12 @@ def hard_mode(my_value, enemy_value):
 
     if 5 in available_squares:
         return 5
-    if 2 * enemy_value in score_board:
+    elif 2 * enemy_value in score_board:
         return two_row(enemy_value)
-    if 2 * my_value in score_board:
+    elif 2 * my_value in score_board:
         return two_row(my_value)
-    return random.choice(available_squares)
+    else:
+        return random.choice(available_squares)
 
 def two_row(value):
 
@@ -193,6 +194,5 @@ elif num_of_players == '0':
             break
 else:
 
-    print "You are an idiot."
-
-print_game_board()    
+    print_game_board()    
+    print "You are an Idiot"
