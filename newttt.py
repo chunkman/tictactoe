@@ -42,9 +42,14 @@ def computer_play(letter, value):
 
    #     space = random.randint(0, 9)
 
-    space = hard_mode()
+    if value is 1:
+        enemy_value = 4
+    else:
+        enemy_value = 1
+
+    space = hard_mode(value, enemy_value)
     while not check_play(space):
-        space = hard_mode()
+        space = hard_mode(value, enemy_value)
 
     game_board[space - 1] = letter
 
@@ -114,29 +119,35 @@ def win_condition():
 
         return False
 
-def hard_mode():
+def hard_mode(my_value, enemy_value):
 
     if 5 in available_squares:
         return 5
-    if 2 in score_board:
-        if score_board.index(2) is 0:
-            return random.choice([1, 5, 9])
-        elif score_board.index(2) is 1:
-            return random.choice([1, 4, 7])
-        elif score_board.index(2) is 2:
-            return random.choice([2, 5, 8])
-        elif score_board.index(2) is 3:
-            return random.choice([3, 6, 9])
-        elif score_board.index(2) is 4:
-            return random.choice([3, 5, 7])
-        elif score_board.index(2) is 5:
-            return random.choice([1, 2, 3])
-        elif score_board.index(2) is 6:
-            return random.choice([4, 5, 6])
-        elif score_board.index(2) is 7:
-            return random.choice([7, 8, 9])
-
+    if 2 * enemy_value in score_board:
+        return two_row(enemy_value)
+    if 2 * my_value in score_board:
+        return two_row(my_value)
     return random.choice(available_squares)
+
+def two_row(value):
+
+    if score_board.index(2*value) is 0:
+        return random.choice([1, 5, 9])
+    elif score_board.index(2*value) is 1:
+        return random.choice([1, 4, 7])
+    elif score_board.index(2*value) is 2:
+        return random.choice([2, 5, 8])
+    elif score_board.index(2*value) is 3:
+        return random.choice([3, 6, 9])
+    elif score_board.index(2*value) is 4:
+        return random.choice([3, 5, 7])
+    elif score_board.index(2*value) is 5:
+        return random.choice([1, 2, 3])
+    elif score_board.index(2*value) is 6:
+        return random.choice([4, 5, 6])
+    elif score_board.index(2*value) is 7:
+        return random.choice([7, 8, 9])
+
 num_of_players = raw_input("Enter the number of players: 1 or 2.")
 
 if num_of_players == '1':
