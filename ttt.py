@@ -1,4 +1,6 @@
-#TODO: Add Hard difficulty level.
+#TODO Add docstrings
+#TODO Add difficulty select
+#TODO Split functions to seperate file?
 
 import string
 import os
@@ -164,12 +166,12 @@ if num_of_players == '1':
 
         print_game_board()
         human_play(player1_letter, player1_value)
-        if win_condition() is True:
+        if win_condition():
             break
 
         print_game_board()
         computer_play(player2_letter, player2_value)
-        if win_condition() is True:
+        if win_condition():
             break
 
 elif num_of_players == '2':
@@ -178,12 +180,12 @@ elif num_of_players == '2':
 
         print_game_board()
         human_play(player1_letter, player1_value)
-        if win_condition() is True:
+        if win_condition():
             break
 
         print_game_board()
         human_play(player2_letter, player2_value)
-        if win_condition() is True:
+        if win_condition():
             break
 
 elif num_of_players == '0':
@@ -192,12 +194,12 @@ elif num_of_players == '0':
 
         print_game_board()
         computer_play(player1_letter,player1_value)
-        if win_condition() is True:
+        if win_condition():
             break
 
         print_game_board()
         computer_play(player2_letter,player2_value)
-        if win_condition() is True:
+        if win_condition():
             break
 
 print_game_board()    
