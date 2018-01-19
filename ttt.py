@@ -57,12 +57,12 @@ def computer_play(letter, value):
 
 def check_number(space):
 
-    while space not in string.digits:
+    while space[0] not in string.digits:
 
         print "Please enter a number between 1 and 9"
         space = raw_input("Enter space number: ")
 
-    return int(space)
+    return int(space[0])
 
 def set_score_board():
 
