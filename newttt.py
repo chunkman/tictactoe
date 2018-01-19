@@ -14,15 +14,13 @@ player2_letter = 'O'
 player1_value = 1
 player2_value = 4
 
-tie_count = 0
-
 def human_play(letter, value):
 
     space = raw_input("%s: Enter space number: " % letter)
 
     space = check_number(space)
     
-    while not check_play(space):
+    while space not in available_squares:
 
         print "That square is already taken. Please choose another."
         space = raw_input("%s: Enter space number: " % letter)
@@ -47,10 +45,6 @@ def computer_play(letter, value):
 
     space = hard_mode(value, enemy_value)
     
-    while not check_play(space):
-
-        space = hard_mode(value, enemy_value)
-
     game_board[space - 1] = letter
 
     value_board[space - 1] = value
@@ -67,11 +61,6 @@ def check_number(space):
         space = raw_input("Enter space number: ")
 
     return int(space)
-
-def check_play(space):
-
-
-    return space in available_squares
 
 def set_score_board():
 
