@@ -127,27 +127,45 @@ def hard_mode(my_value, enemy_value):
         return two_row(enemy_value)
     elif 2 * my_value in score_board:
         return two_row(my_value)
+    elif compare_lists([1, 3, 7, 9], available_squares):
+        return compare_lists([1, 3, 7, 9], available_squares)
     else:
         return random.choice(available_squares)
 
+
+def compare_lists(list1, list2):
+
+    matches = []
+
+    for i in list1:
+        if i in list2:
+            matches.append(i)
+
+    if matches == []:
+        return False
+    else:
+        return random.choice(matches)
+
 def two_row(value):
 
-    if score_board.index(2*value) is 0:
-        return random.choice([1, 5, 9])
-    elif score_board.index(2*value) is 1:
-        return random.choice([1, 4, 7])
-    elif score_board.index(2*value) is 2:
-        return random.choice([2, 5, 8])
-    elif score_board.index(2*value) is 3:
-        return random.choice([3, 6, 9])
-    elif score_board.index(2*value) is 4:
-        return random.choice([3, 5, 7])
-    elif score_board.index(2*value) is 5:
-        return random.choice([1, 2, 3])
-    elif score_board.index(2*value) is 6:
-        return random.choice([4, 5, 6])
-    elif score_board.index(2*value) is 7:
-        return random.choice([7, 8, 9])
+    value *= 2
+
+    if score_board.index(value) is 0:
+        return compare_lists([1, 5, 9], available_squares)
+    elif score_board.index(value) is 1:
+        return compare_lists([1, 4, 7], available_squares)
+    elif score_board.index(value) is 2:
+        return compare_lists([2, 5, 8], available_squares)
+    elif score_board.index(value) is 3:
+        return compare_lists([3, 6, 9], available_squares)
+    elif score_board.index(value) is 4:
+        return compare_lists([3, 5, 7], available_squares)
+    elif score_board.index(value) is 5:
+        return compare_lists([1, 2, 3], available_squares)
+    elif score_board.index(value) is 6:
+        return compare_lists([4, 5, 6], available_squares)
+    elif score_board.index(value) is 7:
+        return compare_lists([7, 8, 9], available_squares)
 
 num_of_players = raw_input("Enter the number of players: 1 or 2.")
 
@@ -192,7 +210,5 @@ elif num_of_players == '0':
         computer_play(player2_letter,player2_value)
         if win_condition() is True:
             break
-else:
 
-    print_game_board()    
-    print "You are an Idiot"
+print_game_board()    
