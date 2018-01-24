@@ -1,6 +1,6 @@
-#TODO Add docstrings
-#TODO Add difficulty select
-#TODO Split functions to seperate file?
+# TODO Add docstrings
+# TODO Add difficulty select
+# TODO Split functions to seperate file?
 
 import string
 import os
@@ -16,12 +16,13 @@ player2_letter = 'O'
 player1_value = 1
 player2_value = 4
 
+
 def human_play(letter, value):
 
     space = raw_input("%s: Enter space number: " % letter)
 
     space = check_number(space)
-    
+
     while space not in available_squares:
 
         print "That square is already taken. Please choose another."
@@ -36,6 +37,7 @@ def human_play(letter, value):
 
     set_score_board()
 
+
 def computer_play(letter, value):
 
     if value is 1:
@@ -46,7 +48,7 @@ def computer_play(letter, value):
         enemy_value = 1
 
     space = hard_mode(value, enemy_value)
-    
+
     game_board[space - 1] = letter
 
     value_board[space - 1] = value
@@ -54,6 +56,7 @@ def computer_play(letter, value):
     available_squares.remove(space)
 
     set_score_board()
+
 
 def check_number(space):
 
@@ -64,16 +67,26 @@ def check_number(space):
 
     return int(space[0])
 
+
 def set_score_board():
 
-    score_board[0] = value_board[0] + value_board[4] + value_board[8]   #Left Diagonal
-    score_board[1] = value_board[0] + value_board[3] + value_board[6]   #Left Column
-    score_board[2] = value_board[1] + value_board[4] + value_board[7]   #Center Column
-    score_board[3] = value_board[2] + value_board[5] + value_board[8]   #Right Column
-    score_board[4] = value_board[2] + value_board[4] + value_board[6]   #Right Diagonal
-    score_board[5] = value_board[0] + value_board[1] + value_board[2]   #Top Row
-    score_board[6] = value_board[3] + value_board[4] + value_board[5]   #Middle Row
-    score_board[7] = value_board[6] + value_board[7] + value_board[8]   #Bottom Row
+    score_board[0] = value_board[0] + \
+        value_board[4] + value_board[8]  # Left Diagonal
+    score_board[1] = value_board[0] + \
+        value_board[3] + value_board[6]  # Left Column
+    score_board[2] = value_board[1] + \
+        value_board[4] + value_board[7]  # Center Column
+    score_board[3] = value_board[2] + \
+        value_board[5] + value_board[8]  # Right Column
+    score_board[4] = value_board[2] + value_board[4] + \
+        value_board[6]  # Right Diagonal
+    score_board[5] = value_board[0] + \
+        value_board[1] + value_board[2]  # Top Row
+    score_board[6] = value_board[3] + \
+        value_board[4] + value_board[5]  # Middle Row
+    score_board[7] = value_board[6] + \
+        value_board[7] + value_board[8]  # Bottom Row
+
 
 def print_game_board():
 
@@ -83,16 +96,17 @@ def print_game_board():
 
     print '\n'
     print "     " + game_board[0] + '|' + game_board[1] + '|' + game_board[2]
-    print '    --------' 
-    print "     " + game_board[3] + '|' + game_board[4] + '|' + game_board[5] 
-    print '    --------' 
-    print "     " + game_board[6] + '|' + game_board[7] + '|' + game_board[8] 
+    print '    --------'
+    print "     " + game_board[3] + '|' + game_board[4] + '|' + game_board[5]
+    print '    --------'
+    print "     " + game_board[6] + '|' + game_board[7] + '|' + game_board[8]
     print '\n'
+
 
 def win_condition():
 
     if 3 in score_board:
-        
+
         print "X Wins!\n"
         return True
 
@@ -109,6 +123,7 @@ def win_condition():
     else:
 
         return False
+
 
 def hard_mode(my_value, enemy_value):
 
@@ -137,6 +152,7 @@ def compare_lists(list1, list2):
     else:
         return random.choice(matches)
 
+
 def two_row(value):
 
     value *= 2
@@ -157,6 +173,7 @@ def two_row(value):
         return compare_lists([4, 5, 6], available_squares)
     elif score_board.index(value) is 7:
         return compare_lists([7, 8, 9], available_squares)
+
 
 num_of_players = raw_input("Enter the number of players: 1 or 2.")
 
@@ -193,13 +210,13 @@ elif num_of_players == '0':
     while True:
 
         print_game_board()
-        computer_play(player1_letter,player1_value)
+        computer_play(player1_letter, player1_value)
         if win_condition():
             break
 
         print_game_board()
-        computer_play(player2_letter,player2_value)
+        computer_play(player2_letter, player2_value)
         if win_condition():
             break
 
-print_game_board()    
+print_game_board()
