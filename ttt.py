@@ -90,9 +90,7 @@ def set_score_board():
 
 def print_game_board():
 
-    if win_condition() == False:
-
-        os.system('cls' if os.name == 'nt' else 'clear')
+    os.system('cls' if os.name == 'nt' else 'clear')
 
     print '\n'
     print "     " + game_board[0] + '|' + game_board[1] + '|' + game_board[2]
@@ -219,4 +217,3 @@ elif num_of_players == '0':
         if win_condition():
             break
 
-print_game_board()
