@@ -1,6 +1,3 @@
-# TODO Add docstrings
-# TODO Add difficulty select
-# TODO Split functions to seperate file?
 
 import string
 import os
