@@ -186,6 +186,8 @@ if num_of_players == '1':
         if win_condition():
             break
 
+   # print_game_board()
+
 elif num_of_players == '2':
 
     while True:
@@ -200,6 +202,8 @@ elif num_of_players == '2':
         if win_condition():
             break
 
+   # print_game_board()
+
 elif num_of_players == '0':
 
     while True:
@@ -213,4 +217,4 @@ elif num_of_players == '0':
         computer_play(player2_letter, player2_value)
         if win_condition():
             break
-
+#print_game_board()
