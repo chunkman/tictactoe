@@ -87,7 +87,7 @@ def set_score_board():
 
 def print_game_board():
 
-    os.system('cls' if os.name == 'nt' else 'clear')
+    #os.system('cls' if os.name == 'nt' else 'clear')
 
     print '\n'
     print "     " + game_board[0] + '|' + game_board[1] + '|' + game_board[2]
@@ -103,20 +103,24 @@ def win_condition():
     if 3 in score_board:
 
         print "X Wins!\n"
+        print_game_board()
         return True
 
     elif 12 in score_board:
 
         print "O Wins\n"
+        print_game_board()
         return True
 
     elif 0 not in value_board:
 
         print "It's a Tie!"
+        print_game_board()
         return True
 
     else:
 
+        os.system('cls' if os.name == 'nt' else 'clear')
         return False
 
 
@@ -186,7 +190,6 @@ if num_of_players == '1':
         if win_condition():
             break
 
-   # print_game_board()
 
 elif num_of_players == '2':
 
@@ -202,7 +205,6 @@ elif num_of_players == '2':
         if win_condition():
             break
 
-   # print_game_board()
 
 elif num_of_players == '0':
 
@@ -217,4 +219,3 @@ elif num_of_players == '0':
         computer_play(player2_letter, player2_value)
         if win_condition():
             break
-#print_game_board()
