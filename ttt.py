@@ -15,14 +15,14 @@ player2_value = 4
 
 def human_play(letter, value):
 
-    space = raw_input("%s: Enter space number: " % letter)
+    space = input("%s: Enter space number: " % letter)
 
     space = check_number(space)
 
     while space not in available_squares:
 
-        print "That square is already taken. Please choose another."
-        space = raw_input("%s: Enter space number: " % letter)
+        print("That square is already taken. Please choose another.")
+        space = input("%s: Enter space number: " % letter)
         space = check_number(space)
 
     game_board[space - 1] = letter
@@ -36,7 +36,7 @@ def human_play(letter, value):
 
 def computer_play(letter, value):
 
-    if value is 1:
+    if value == 1:
 
         enemy_value = 4
     else:
@@ -58,8 +58,8 @@ def check_number(space):
 
     while space[0] not in string.digits:
 
-        print "Please enter a number between 1 and 9"
-        space = raw_input("Enter space number: ")
+        print("Please enter a number between 1 and 9")
+        space = input("Enter space number: ")
 
     return int(space[0])
 
@@ -88,32 +88,32 @@ def print_game_board():
 
     #os.system('cls' if os.name == 'nt' else 'clear')
 
-    print '\n'
-    print "     " + game_board[0] + '|' + game_board[1] + '|' + game_board[2]
-    print '    --------'
-    print "     " + game_board[3] + '|' + game_board[4] + '|' + game_board[5]
-    print '    --------'
-    print "     " + game_board[6] + '|' + game_board[7] + '|' + game_board[8]
-    print '\n'
+    print('\n')
+    print("     " + game_board[0] + '|' + game_board[1] + '|' + game_board[2])
+    print('    --------')
+    print("     " + game_board[3] + '|' + game_board[4] + '|' + game_board[5])
+    print('    --------')
+    print("     " + game_board[6] + '|' + game_board[7] + '|' + game_board[8])
+    print('\n')
 
 
 def win_condition():
 
     if 3 in score_board:
 
-        print "X Wins!\n"
+        print("X Wins!\n")
         print_game_board()
         return True
 
     elif 12 in score_board:
 
-        print "O Wins\n"
+        print("O Wins\n")
         print_game_board()
         return True
 
     elif 0 not in value_board:
 
-        print "It's a Tie!"
+        print("It's a Tie!")
         print_game_board()
         return True
 
@@ -155,25 +155,25 @@ def two_row(value):
 
     value *= 2
 
-    if score_board.index(value) is 0:
-        return compare_lists([1, 5, 9], available_squares)
-    elif score_board.index(value) is 1:
-        return compare_lists([1, 4, 7], available_squares)
-    elif score_board.index(value) is 2:
+    if score_board.index(value) == 0:
+        return compare_l==ts([1, 5, 9], available_squares)
+    elif score_board.index(value) == 1:
+        return compare_l==ts([1, 4, 7], available_squares)
+    elif score_board.index(value) == 2:
         return compare_lists([2, 5, 8], available_squares)
-    elif score_board.index(value) is 3:
+    elif score_board.index(value) == 3:
         return compare_lists([3, 6, 9], available_squares)
-    elif score_board.index(value) is 4:
+    elif score_board.index(value) == 4:
         return compare_lists([3, 5, 7], available_squares)
-    elif score_board.index(value) is 5:
+    elif score_board.index(value) == 5:
         return compare_lists([1, 2, 3], available_squares)
-    elif score_board.index(value) is 6:
+    elif score_board.index(value) == 6:
         return compare_lists([4, 5, 6], available_squares)
-    elif score_board.index(value) is 7:
+    elif score_board.index(value) == 7:
         return compare_lists([7, 8, 9], available_squares)
 
 
-num_of_players = raw_input("Enter the number of players: 1 or 2.")
+num_of_players = input("Enter the number of players: 1 or 2.")
 
 if num_of_players == '1':
 
@@ -218,3 +218,4 @@ elif num_of_players == '0':
         computer_play(player2_letter, player2_value)
         if win_condition():
             break
+
