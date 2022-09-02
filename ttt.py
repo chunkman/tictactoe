@@ -156,9 +156,9 @@ def two_row(value):
     value *= 2
 
     if score_board.index(value) == 0:
-        return compare_l==ts([1, 5, 9], available_squares)
+        return compare_lists([1, 5, 9], available_squares)
     elif score_board.index(value) == 1:
-        return compare_l==ts([1, 4, 7], available_squares)
+        return compare_lists([1, 4, 7], available_squares)
     elif score_board.index(value) == 2:
         return compare_lists([2, 5, 8], available_squares)
     elif score_board.index(value) == 3:
